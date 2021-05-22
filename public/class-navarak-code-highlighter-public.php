@@ -75,6 +75,8 @@ class Navarak_Code_Highlighter_Public {
 
 		wp_enqueue_style( $this->navarak_code_highlighter, plugin_dir_url( __FILE__ ) . 'css/navarak-code-highlighter-public.css', array(), $this->version, 'all' );
 
+		wp_enqueue_style( $this->navarak_code_highlighter.'-highlighcss', plugin_dir_url( __FILE__ ) . 'css/highlightjs/darcula.css', array(), $this->version, 'all' );
+
 	}
 
 	/**
@@ -96,8 +98,8 @@ class Navarak_Code_Highlighter_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->navarak_code_highlighter, plugin_dir_url( __FILE__ ) . 'js/navarak-code-highlighter-public.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script( $this->navarak_code_highlighter.'-highlighjs', plugin_dir_url( __FILE__ ) . 'js/highlight.pack.js', array(), $this->version, true );
+		wp_enqueue_script( $this->navarak_code_highlighter, plugin_dir_url( __FILE__ ) . 'js/navarak-code-highlighter-public.js', array( 'jquery' ), $this->version, true );
 	}
 
 }

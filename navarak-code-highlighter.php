@@ -23,6 +23,9 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+// add_filter( 'render_block', 'wrap_my_image_block', 10, 2 );
+
+
 /**
  * Currently plugin version.
  * Start at version 1.0.0 and use SemVer - https://semver.org

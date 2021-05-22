@@ -124,6 +124,19 @@ class Navarak_Code_Highlighter {
 
 		$this->loader = new Navarak_Code_Highlighter_Loader();
 
+		$this->loader->add_filter('render_block', $this, 'modify_code_block_output', 10, 2 );
+	}
+
+	public function modify_code_block_output( $block_content, $block ) {
+		if ( 'core/code' === $block['blockName'] ) {
+			ob_start();
+			$identifier = rand(1, 99999);
+			include __DIR__.'/../public/partials/navarak-code-highlighter-public-display.php';
+			$block_content = ob_get_contents();
+			ob_end_clean();
+		}
+
+		return $block_content;
 	}
 
 	/**

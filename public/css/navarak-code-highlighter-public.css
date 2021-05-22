@@ -2,3 +2,52 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+.d-flex {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display:flex !important
+}
+.justify-content-between {
+    -webkit-box-pack: justify !important;
+    -ms-flex-pack: justify !important;
+    justify-content:space-between !important
+}
+.example-top {
+    background: #1e1e1e;
+    font-family: Work Sans, Open Sans, Helvetica, Arial, sans-serif;
+    color: #fff;
+    padding: 15px 15px 15px 35px;
+    margin-bottom: -15px;
+    border-radius:3px;
+    direction: ltr;
+}
+
+.example-top .copy-btn {
+    font-family: Open Sans, Helvetica, Arial, sans-serif;
+    border: 0;
+    background-color: transparent;
+    opacity: .3;
+    font-size: 14px;
+    font-weight: 700;
+    color:#fff
+}
+
+.example-top .copy-btn:focus, .example-top .copy-btn:hover {
+    opacity: 1;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline:none
+}
+
+pre code {
+	direction: ltr;
+	padding: 35px!important;
+}
+pre.wp-block-code {
+	padding: 0;
+	background-color: transparent;
+	border:	none;
+}
+
+

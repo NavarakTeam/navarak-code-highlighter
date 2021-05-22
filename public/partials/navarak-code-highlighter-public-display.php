@@ -13,4 +13,16 @@
  */
 ?>
 
-<!-- This file should primarily consist of HTML with a little bit of PHP. -->
+<div class="example-container">
+	<div class="d-flex justify-content-between example-top">
+		<strong id="detect-language">
+			Example
+		</strong>
+		<button id="code-copy-<?php echo $identifier ?>" onclick="alert(<?php echo $identifier ?>);" class="btn copy-btn">
+			<i class="fa fa-copy"></i> Copy
+		</button>
+	</div> 
+	<div id="code-<?php echo $identifier ?>">
+		<?php echo $block_content ?>
+	</div> 
+</div>
