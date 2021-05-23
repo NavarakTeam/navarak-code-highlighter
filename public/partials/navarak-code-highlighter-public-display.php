@@ -18,7 +18,7 @@
 		<strong id="detect-language">
 			Example
 		</strong>
-		<button id="code-copy-<?php echo $identifier ?>" onclick="alert(<?php echo $identifier ?>);" class="btn copy-btn">
+		<button id="code-copy-<?php echo $identifier ?>" onclick="addToClipboard(<?php echo $identifier ?>);" class="btn copy-btn" data-clipboard-snippet>
 			<i class="fa fa-copy"></i> Copy
 		</button>
 	</div> 
