@@ -28,10 +28,16 @@ function addToClipboard(codeID){
         newRangeHolder.selectNode(codeElement),
         window.getSelection().addRange(newRangeHolder);
         try {
-            document.execCommand("copy")
+            document.execCommand("copy") && changeCopyText(codeID)
         } catch (e) {
             console.error(e)
         }
         window.getSelection().removeAllRanges()
     }
 }
+
+function changeCopyText(codeID){
+	var element = document.getElementById("code-copy-" + codeID );
+	element.innerHTML='<i class="fa fa-copy"></i> Copied';
+}
+

@@ -14,3 +14,11 @@
 ?>
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
+<select name="navarak_code_highlighter_current_style" id="navarak_code_highlighter_current_style">
+<?php
+foreach ($scanned_directory as $key => $directory) {
+	$selected = ( $option == $directory ) ? 'selected="selected"' : '';
+	echo "\n\t<option value='$directory' $selected> $directory</option>";
+}
+?>
+</select>

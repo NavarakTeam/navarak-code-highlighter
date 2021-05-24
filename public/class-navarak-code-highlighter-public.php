@@ -75,7 +75,12 @@ class Navarak_Code_Highlighter_Public {
 
 		wp_enqueue_style( $this->navarak_code_highlighter, plugin_dir_url( __FILE__ ) . 'css/navarak-code-highlighter-public.css', array(), $this->version, 'all' );
 
-		wp_enqueue_style( $this->navarak_code_highlighter.'-highlighcss', plugin_dir_url( __FILE__ ) . 'css/highlightjs/darcula.css', array(), $this->version, 'all' );
+		$current_style = get_option( 'navarak_code_highlighter_current_style' );
+		if( empty($current_style) || is_null($current_style) ) {
+			$current_style = 'darcula.css';
+		}
+		
+		wp_enqueue_style( $this->navarak_code_highlighter.'-highlighcss', plugin_dir_url( __FILE__ ) . 'css/highlightjs/'.$current_style, array(), $this->version, 'all' );
 
 	}
 
@@ -100,6 +105,18 @@ class Navarak_Code_Highlighter_Public {
 
 		wp_enqueue_script( $this->navarak_code_highlighter.'-highlighjs', plugin_dir_url( __FILE__ ) . 'js/highlight.pack.js', array(), $this->version, true );
 		wp_enqueue_script( $this->navarak_code_highlighter, plugin_dir_url( __FILE__ ) . 'js/navarak-code-highlighter-public.js', array( 'jquery' ), $this->version, true );
+	}
+
+	public function modify_code_block_output( $block_content, $block ) {
+		if ( 'core/code' === $block['blockName'] ) {
+			ob_start();
+			$identifier = rand(1, 99999);
+			include __DIR__.'/partials/navarak-code-highlighter-public-display.php';
+			$block_content = ob_get_contents();
+			ob_end_clean();
+		}
+
+		return $block_content;
 	}
 
 }

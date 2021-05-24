@@ -100,4 +100,43 @@ class Navarak_Code_Highlighter_Admin {
 
 	}
 
+	public function register_settings() 
+	{
+	    register_setting(
+	    	'general',
+	    	'navarak_code_highlighter_current_style', 
+	    	'esc_attr'
+	    );
+
+	    add_settings_section(  
+	        'style_of_code_element_id', // Section ID 
+	        __( 'Code Highlighter', 'navarak-code-highlighter' ), // Section Title
+	        null, // Callback
+	        'general' // What Page?  This makes the section show up on the General Settings Page
+	    );
+
+	    add_settings_field( // Option 1
+	        'navarak_code_highlighter_current_style', // Option ID
+	        __( 'Choose Style', 'navarak-code-highlighter' ), // Label
+	        [$this, 'print_style_chooser'], 
+	        'general', // Page it will be displayed (General Settings)
+	        'style_of_code_element_id', // Name of our section
+	    );
+	}
+
+
+	/* 
+	 * Print settings field content 
+	 */
+	function print_style_chooser() 
+	{
+		$option = get_option('navarak_code_highlighter_current_style');
+	    $directory = __DIR__.'/../public/css/highlightjs/';
+		$scanned_directory = array_filter( scandir($directory), function($directory){
+		    return substr( $directory, -4 ) === '.css';
+		});
+
+		include __DIR__.'/partials/navarak-code-highlighter-admin-display.php';
+	}
+
 }
